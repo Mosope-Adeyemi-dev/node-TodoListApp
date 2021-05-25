@@ -1,4 +1,5 @@
 const express = require('express');
+const date = require(__dirname+"/date.js");
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -12,15 +13,10 @@ let workArray = [];
 var item = "";
 
 app.get("/", (req, res) => {
-    let options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-    }
-    let date = new Date().toLocaleDateString("en-US", options)
-
+   let dating = date.getFullDate();
+   
     res.render("list", {
-        listType: date,
+        listType: dating,
         items: itemsArray
     });
 });
