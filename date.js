@@ -1,26 +1,18 @@
-
-function getFullDate(){
-    
-    let options = {
+module.exports.getFullDate = function (){
+    const today = new Date();
+    const options = {
         weekday: "long",
         day: "numeric",
         month: "long",
     }
-
-    let date = new Date().toLocaleDateString("en-US", options);
-    return date;
+    return today.toLocaleDateString("en-US", options);  
 }
-
-module.exports.getFullDate = getFullDate;
-
-function getDay(){
-    
-    let options = {
+module.exports.getDay = function (){
+    const today = new Date();
+    const options = {
         weekday: "long",
     }
-
-    let date = new Date().toLocaleDateString("en-US", options);
-    return date;
+    return today.toLocaleDateString("en-US", options);
 }
 
-module.exports.getDay = getDay;
+
