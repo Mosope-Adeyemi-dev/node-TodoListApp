@@ -6,20 +6,12 @@ const app = express();
 
 mongoose.set('useFindAndModify', false);
 
-// mongoose.connect("mongodb://localhost:27017/TodoDB", {
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true
-// })
 mongoose.connect("mongodb+srv://admin-dev:test123@cluster0.71tzy.mongodb.net/TodoDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({
     extended: true
 }));
 app.use(express.static("public"));
-
-
-let workArray = [];
-
 
 //work schema
 const itemSchema = new mongoose.Schema({
@@ -39,7 +31,6 @@ const item3 = new Item({
     name: "Hit this to delete"
 });
 const defaultItems = [item1, item2, item3];
-
 
 app.get("/", (req, res) => {
 
@@ -88,14 +79,10 @@ app.post("/", (req, res) => {
       }   
 });
 
-
-
 app.post("/delete", (req, res)=>{
     const checkedItemID = req.body.checkbox;
     const listName = req.body.hiddenListName;
-    console.log(listName);
-
-    
+   
     if( listName === "Today"){
         Item.findByIdAndRemove({_id: checkedItemID}, function(err){
         if(!err){
@@ -120,14 +107,12 @@ app.post("/delete", (req, res)=>{
     
 });
 
-
 const newListSchema = new mongoose.Schema({
     name: String,
     item: [itemSchema]
 });
 
 const List = mongoose.model("List", newListSchema);
-
 
 app.get("/:newCustomListName", (req ,res)=>{
     const customListName = _.capitalize(req.params.newCustomListName);
