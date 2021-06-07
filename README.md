@@ -1,6 +1,6 @@
 # Todo List App
-this project helped me put to pratice what i have learnt so far, on NoSQL databases, especially using mongoDB,
-
+while working on this project i was able to learn the essentials of NoSQL databases, and how
+user data can be persisted using MongoDB,
 and was able to implement creating custom lists, adding tasks, deleting completed tasks and persisting user data using 
 
 mongoDB's cloud platform (Atlas).
