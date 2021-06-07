@@ -6,7 +6,7 @@ const app = express();
 
 mongoose.set('useFindAndModify', false);
 
-mongoose.connect("mongodb+srv://admin-dev:test123@cluster0.71tzy.mongodb.net/TodoDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect("mongodb+srv://admin-dev:<yourpassword>@cluster0.71tzy.mongodb.net/<databasename>?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({
     extended: true
